@@ -1,0 +1,40 @@
+﻿<UserControl x:Class="AnimeList.UserController.AnimeView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:AnimeList.UserController"
+             xmlns:cachedImage="clr-namespace:CachedImage;assembly=CachedImage"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" d:DesignWidth="800">
+        
+        <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+
+        <Border x:Name="border" CornerRadius="6" BorderBrush="Black" BorderThickness="2,2,2,2" Height="50" ClipToBounds="True">
+            <StackPanel Orientation="Horizontal">
+
+                <cachedImage:Image x:Name="animeImage" Margin="3" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" Height="{Binding ElementName=border, Path=Height}" Stretch="UniformToFill"  Source="/Logo/noimage.png"></cachedImage:Image>
+                <TextBlock x:Name="animeName"  Text="" FontSize="25" Margin="15, 0, 0, 0"></TextBlock>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" CornerRadius="6" BorderBrush="Black" BorderThickness="2" Height="50" ClipToBounds="True" Margin="10,0,0,0">
+            <StackPanel Orientation="Horizontal">
+                <Button Background="#00DDDDDD" BorderBrush="#00707070">
+                    <Image HorizontalAlignment="Left" Margin="3,3,3,3" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" Stretch="UniformToFill"  Source="/Logo/AddToWathedList.png"></Image>
+                </Button>
+                <Button Background="#00DDDDDD" BorderBrush="#00707070">
+                    <Image HorizontalAlignment="Left" Margin="3,3,3,3" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" Stretch="UniformToFill"  Source="/Logo/AddToWathedList.png"></Image>
+                </Button>
+                <Button Background="#00DDDDDD" BorderBrush="#00707070">
+                    <Image HorizontalAlignment="Left" Margin="3,3,3,3" Width="{Binding RelativeSource={RelativeSource Self}, Path=Height}" Stretch="UniformToFill"  Source="/Logo/plusIcon.png"></Image>
+                </Button>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

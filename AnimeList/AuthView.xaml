@@ -1,0 +1,24 @@
+﻿<Window x:Class="AnimeList.AuthView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AnimeList"
+        mc:Ignorable="d"
+        Title="AuthView" Height="450" Width="400">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="2.5*"/>
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBox x:Name="login" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Padding="5,5,5,5" Margin="50,5,5,10" MinWidth="250" FontSize="22" FontFamily="Roboto" AutomationProperties.HelpText=""/>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Top" Padding="5,5,5,10" Margin="35,5,5,5" MinWidth="100" Content="Login" FontFamily="Roboto" FontSize="22"/>
+
+        <TextBox x:Name="pasword" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center" Padding="5,5,5,5" Margin="50,5,5,25" MinWidth="250" FontSize="22" FontFamily="Roboto" AutomationProperties.HelpText=""/>
+        <Label Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Center" Padding="5,5,5,10" Margin="4,5,5,20" MinWidth="100" Content="Pasword" FontFamily="Roboto" FontSize="22"/>
+
+        <Button Content="Sign in" Grid.Row="1" VerticalAlignment="Bottom" HorizontalAlignment="Center" Padding="5,5,5,5" Margin="5,5,5,5" FontFamily="Roboto" FontSize="22" Click="Button_Click"/>
+    </Grid>
+</Window>
