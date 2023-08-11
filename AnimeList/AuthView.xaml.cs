@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using AnimeList.Scripts;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System.Collections.Specialized;
 using System.Net;
@@ -19,18 +20,12 @@ namespace AnimeList
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
+            RestClient client = new RestClient();
 
-            using (WebClient client = new WebClient())
-            {
-                client.Headers[HttpRequestHeader.ContentType] = "application/json; charset=utf-8";
-                JObject jobject = new JObject();
-                jobject["userName"] = login.Text;
-                jobject["login"] = pasword.Text;
+            object data = new { userName = login.Text, login = pasword.Text };
+            var response = client.Post("User/LogIn/", data);
 
-                var response = client.UploadString("https://azerlord.bsite.net/api/user/LogIn/", jobject.ToString());
-
-                MessageBox.Show(response);
-            }
+            MessageBox.Show(response);
         }
     }
 }
