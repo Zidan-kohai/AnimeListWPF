@@ -1,9 +1,4 @@
 ﻿using AnimeList.Scripts;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections.Specialized;
-using System.Net;
-using System.Text;
 using System.Windows;
 
 namespace AnimeList

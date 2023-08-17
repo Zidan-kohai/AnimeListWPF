@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Text;
 
@@ -14,7 +13,6 @@ namespace AnimeList.Scripts
         {
             var response = client.GetAsync(baseUrl + path).GetAwaiter().GetResult();
             return response.Content.ReadAsStringAsync().Result;
-
         }
 
         public string Post(string path, object data)

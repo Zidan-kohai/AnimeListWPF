@@ -66,6 +66,7 @@
     </Compile>
     <Compile Include="Scripts\Anime.cs" />
     <Compile Include="Scripts\AnimeInfoView.cs" />
+    <Compile Include="Scripts\UserData.cs" />
     <Compile Include="Scripts\RestClient.cs" />
     <Compile Include="UserController\AnimeView.xaml.cs">
       <DependentUpon>AnimeView.xaml</DependentUpon>
