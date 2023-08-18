@@ -11,6 +11,32 @@ namespace AnimeList
             InitializeComponent();
         }
 
+        private void Init()
+        {
+            if (checkIsLogined())
+            {
+                LoginView();
+            }
+            else
+            {
+                LogOutView();
+            }
+        }
+
+        private void LoginView()
+        {
+
+        }
+
+        private void LogOutView()
+        {
+
+        }
+        private bool checkIsLogined()
+        {
+            return UserData.Instance.UserRoleId > 0;
+        }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             RestClient client = new RestClient();

@@ -5,22 +5,18 @@ using System.Threading.Tasks;
 
 namespace AnimeList.Scripts
 {
-    public class UserData
+    public class UserDataController
     {
-        private static UserData _instance;
-        public static UserData Instance { get { return _instance; } private set { } }
+        private static UserDataController _instance;
+        public static UserDataController Instance { get { return _instance; } private set { } }
 
         private string path = AppDomain.CurrentDomain.BaseDirectory + "/UserData.txt";
 
-        public int UserId { get; set; }
-        public string UserName { get; set; }
-        public string login { get; set; }
-        public int UserRoleId { get => (int)_userRole; set => _userRole = (UserRole)value; }
-
-        private UserRole _userRole = UserRole.Guest;
+        private UserData userData = new UserData();
 
 
-        public UserData() 
+
+        public UserDataController() 
         {
             if(_instance != null)
             {
@@ -34,7 +30,7 @@ namespace AnimeList.Scripts
         public void SetInfo(string json)
         {
             try { 
-                _instance = JsonConvert.DeserializeObject<UserData>(json);
+                _instance.userData = JsonConvert.DeserializeObject<UserData>(json);
             }
             catch {
                 throw new Exception("Exception on deserialize UserData");
@@ -75,7 +71,7 @@ namespace AnimeList.Scripts
                     string str = sr.ReadToEnd();
                     try
                     {
-                        _instance = JsonConvert.DeserializeObject<UserData>(str);
+                        _instance.userData = JsonConvert.DeserializeObject<UserData>(str);
                     }
                     catch
                     {
@@ -91,5 +87,16 @@ namespace AnimeList.Scripts
         Admin = 1,
         User,
         Guest
+    }
+
+
+    public class UserData
+    {
+        public int UserId { get; set; }
+        public string UserName { get; set; }
+        public string login { get; set; }
+        public int UserRoleId { get => (int)_userRole; set => _userRole = (UserRole)value; }
+
+        private UserRole _userRole = UserRole.Guest;
     }
 }
