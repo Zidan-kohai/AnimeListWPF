@@ -1,4 +1,5 @@
 ﻿using AnimeList.Scripts;
+using Newtonsoft.Json.Linq;
 using System.Windows;
 
 namespace AnimeList
@@ -17,7 +18,12 @@ namespace AnimeList
             object data = new { userName = login.Text, login = pasword.Text };
             var response = client.Post("User/LogIn/", data);
 
-            MessageBox.Show(response);
+            JObject jobject = JObject.Parse(response);
+            if ((bool)jobject["isOK"] == true)
+            {
+                UserData.Instance.SetInfo(response);
+                MessageBox.Show(response);
+            }
         }
     }
 }

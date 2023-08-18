@@ -20,6 +20,8 @@ namespace AnimeList
 
         public void Init()
         {
+            UserData data = new UserData();
+
             var client = new RestClient();
             string response = client.Get("Anime/GetAll");
 

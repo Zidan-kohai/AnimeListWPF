@@ -10,7 +10,7 @@ namespace AnimeList.Scripts
         private static UserData _instance;
         public static UserData Instance { get { return _instance; } private set { } }
 
-        private string path = System.AppDomain.CurrentDomain.BaseDirectory + "/UserData.txt";
+        private string path = AppDomain.CurrentDomain.BaseDirectory + "/UserData.txt";
 
         public int UserId { get; set; }
         public string UserName { get; set; }
@@ -20,7 +20,7 @@ namespace AnimeList.Scripts
         private UserRole _userRole = UserRole.Guest;
 
 
-        private UserData() 
+        public UserData() 
         {
             if(_instance != null)
             {
@@ -48,10 +48,17 @@ namespace AnimeList.Scripts
             {
                 using (StreamWriter  sw = new StreamWriter(Path.Combine(path)))
                 {
+                    try { 
 
-                    string str = JsonConvert.SerializeObject(this, Formatting.Indented);
-                    sw.WriteLine(str);
+                        string str = JsonConvert.SerializeObject(this, Formatting.Indented);
+                        sw.WriteLine(str);
 
+                    }
+                    catch {
+
+                        throw new Exception("Exception on serialize UserData");
+
+                    }
                 }
             });
 
@@ -61,10 +68,19 @@ namespace AnimeList.Scripts
         {
             await Task.Run(() =>
             {
+                if (!File.Exists(path)) return;
+
                 using (StreamReader sr = new StreamReader(Path.Combine(path)))
                 {
                     string str = sr.ReadToEnd();
-                    _instance = JsonConvert.DeserializeObject<UserData>(str);
+                    try
+                    {
+                        _instance = JsonConvert.DeserializeObject<UserData>(str);
+                    }
+                    catch
+                    {
+                        throw new Exception("Exception on deserialize UserData");
+                    }
                 }
             });
         }
