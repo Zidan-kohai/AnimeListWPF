@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System;
 using System.IO;
 using System.Threading.Tasks;
 
@@ -32,7 +33,12 @@ namespace AnimeList.Scripts
 
         public void SetInfo(string json)
         {
-            _instance = JsonConvert.DeserializeObject<UserData>(json);
+            try { 
+                _instance = JsonConvert.DeserializeObject<UserData>(json);
+            }
+            catch {
+                throw new Exception("Exception on deserialize UserData");
+            }
             Save();
         }
 

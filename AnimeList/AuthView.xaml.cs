@@ -3,9 +3,6 @@ using System.Windows;
 
 namespace AnimeList
 {
-    /// <summary>
-    /// Логика взаимодействия для AuthView.xaml
-    /// </summary>
     public partial class AuthView : Window
     {
         public AuthView()
